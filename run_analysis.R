@@ -22,11 +22,11 @@ library(data.table)
 ##### Get the data #####
 ########################
 
-# I first download the the dataset I will wirk with
+# I will first download the dataset I work with
 url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 download.file(url, destfile = "/Users/sorennonnengart/Coursera/Data_science/Datensätze/c3_week4/df_1.zip"
 
-## I first create a path to the folder where my data is located
+## I then create a path to the folder where my data is located
 path <- "/Users/sorennonnengart/Coursera/Data_science/Datensätze/c3_week4/"
 ## I then set the path to it
 setwd(path)
@@ -109,7 +109,7 @@ colnames(extr_data) <- gsub("-std()", "stdv", colnames(extr_data), ignore.case =
 
 names(extr_data)
 
-# creates a second data set with the average of each variable for activity and subject.
+# I create a second dataset with the average of each variable for activity and subject.
 
 extr_data$Subject <- as.factor(extr_data$Subject)
 extr_data <- data.table(extr_data)
@@ -120,6 +120,5 @@ tdata <- tdata[order(tdata$Subject,tdata$Activity),]
 write.table(tdata, file = "Tidy.txt", row.names = FALSE)
 
 
-## save dataset tdata
-getwd()
+## I save dataset 
 save(tdata,file="tiny_data.Rda")
